@@ -2,6 +2,7 @@ var async = require('async');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
+var Book = require('../models/Book');
 var User = require('../models/User');
 
 /**
@@ -112,9 +113,13 @@ exports.signupPost = function(req, res, next) {
 /**
  * GET /account
  */
-exports.accountGet = function(req, res) {
-  res.render('account/profile', {
-    title: 'My Account'
+exports.profileGet = function(req, res) {
+  Book.find({ userFbId: req.user.facebook }, function (err, books) {
+    if (err) {
+      res.sendStatus(500);
+      return handleError(err);
+    }
+    res.render('profile', books);
   });
 };
 
@@ -193,7 +198,7 @@ exports.unlink = function(req, res, next) {
         break;
       case 'github':
           user.github = undefined;
-        break;      
+        break;
       default:
         req.flash('error', { msg: 'Invalid OAuth Provider' });
         return res.redirect('/account');

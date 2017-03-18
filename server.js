@@ -71,7 +71,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', HomeController.index);
 app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
-app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
 app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
 app.get('/signup', userController.signupGet);
@@ -94,13 +93,12 @@ app.get('/auth/github/callback', passport.authenticate('github', { successRedire
 app.get('/search', bookController.searchGet);
 app.post('/book', userController.ensureAuthenticated, bookController.bookPost);
 app.get('/me/books', bookController.userBooksGet);
+app.get('/profile', userController.ensureAuthenticated, userController.profileGet);
 app.get('/books/top/2016', bookController.topBooks2016Get);
 app.get('/books/top/:filter', bookController.topBooksGet);
 app.get('/book', bookController.bookGet);
 
 app.get('/test', bookController.test);
-
-
 
 app.get('/topbooks', function (req, res) {
   res.render('topbooks')

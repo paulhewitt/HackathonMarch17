@@ -33,13 +33,13 @@
           <i class="caret"></i>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="/account">My Account</a></li>
+          <li><a href="/profile">My Account</a></li>
           <li class="divider"></li>
           <li><a href="/logout">Logout</a></li>
         </ul>
       </li>
     {{else}}
-      <li class="{{#ifeq title 'Log in'}}active{{/ifeq}}"><a href="/login">Log in</a></li>
+      <li class="{{#ifeq title 'Log in'}}active{{/ifeq}}"><a href="/auth/facebook">Log in</a></li>
       <li class="{{#ifeq title 'Sign up'}}active{{/ifeq}}"><a href="/signup">Sign up</a></li>
     {{/if}}
     </ul>
