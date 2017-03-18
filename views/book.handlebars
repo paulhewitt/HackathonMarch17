@@ -3,18 +3,18 @@
     <div class="col-sm-3">
       <img src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="bookcover" height="75%" width="75%" style="padding-bottom: 30px;">
       <br/>
-      <button type="button" class="btn btn-default" aria-label="Checkmark">
-        <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"> <p>Read</p></span>
+      <button title="I read this book!" type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-check"></i>
       </button>
 
-      <button type="button" class="btn btn-default" aria-label="Thumbs Up">
-        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+      <button title="thumbs up" type="button" class="btn btn-success" aria-label="Thumbs Up" style="font-family: 'Open Sans', sans-serif;">
+        <i class="fa fa-thumbs-o-up"> 0 </i>
       </button>
 
-      <button type="button" class="btn btn-default" aria-label="Thumbs Down">
-        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+      <button title="thumbs down" type="button" class="btn btn-danger" aria-label="Thumbs Down" style="font-family: 'Open Sans', sans-serif;">
+        <i class="fa fa-thumbs-o-down"> 0 </i>
       </button>
-      <br/>
+      <br/><br/>
       <div class="alert alert-info">
         Available at The Regina Public Library
       </div>

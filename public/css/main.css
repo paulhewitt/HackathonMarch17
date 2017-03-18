@@ -18,7 +18,7 @@ body {
   background-color: #f4f4f4;;
   margin-bottom: 44px;
   line-height: 1.57142857;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -27,6 +27,10 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: #1d7cf4;
+}
+
+button{
+  font-family: 'Open Sans', sans-serif;
 }
 
 a:hover {
@@ -163,6 +167,8 @@ footer {
   border-color: #ccc;
   background: #f5f5f5 linear-gradient(to bottom, #fff, #f5f5f5);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 -1px 4px rgba(151, 159, 175, 0.2);
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 .btn-default:active {
@@ -170,9 +176,11 @@ footer {
 }
 
 .btn-success {
+  font-family: 'Open Sans', sans-serif !important;
   border-color: #208a46;
   background: #29b35b linear-gradient(to bottom, #2ec866, #29b35b);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(32, 138, 70, 0.3);
+
 }
 
 .btn-success:active {
@@ -180,6 +188,7 @@ footer {
 }
 
 .btn-danger {
+  font-family: 'Raleway', sans-serif !important;
   border-color: #8c1512;
   background: #b61b17 linear-gradient(to bottom, #cc1e1a, #b61b17);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(140, 21, 18, 0.3);
