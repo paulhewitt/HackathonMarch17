@@ -86,6 +86,7 @@ passport.use(new FacebookStrategy({
   }
 }));
 
+/*
 // Sign in with Google
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_ID,
@@ -185,3 +186,4 @@ passport.use(new GithubStrategy({
     });
   }
 }));
+*/
