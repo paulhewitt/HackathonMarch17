@@ -76,6 +76,7 @@ footer {
 .navbar-default {
   background-color: #fff;
   border-color: #e0e0e0;
+  margin: 0;
 }
 
 .navbar-default .navbar-nav {
@@ -286,4 +287,16 @@ textarea {
   border-radius: 2px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.container-fluid
+{
+  padding: 0;
+  margin: 0;
+}
+
+.mainrow{
+  background-image: url("../images/banner2.png");
+  width: 100%;
+  margin: 0;
 }
