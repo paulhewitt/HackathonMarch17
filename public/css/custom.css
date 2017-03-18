@@ -1,2 +1,21 @@
-/* Panels
-/* ------------------------- */
+.bookcover
+{
+  text-align: left;
+}
+
+.bookvoting
+{
+  text-align: left;
+  padding-top: 15px;
+}
+
+.bookdescripton
+{
+  text-align: right
+}
+
+.bookcomments
+{
+  text-align: right;
+  padding-top: 45px;
+}
