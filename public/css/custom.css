@@ -188,5 +188,6 @@ input[type="submit"]{
 
 #ui-id-1 {
   max-height: 250px;
+  width: 50%;
   overflow: auto;
 }

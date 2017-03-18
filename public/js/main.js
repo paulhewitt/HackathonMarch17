@@ -12,6 +12,11 @@ function userTyped() {
     if (searchRequest != null)
         searchRequest.abort();
     searchTerm = $(input).val();
+
+    $('#loadingSpan').css('left', '-40px');
+    $('#loadingSpan').html('<i class="fa fa-2x fa-spinner fa-spin"></i>');
+    $('#loadingSpan').show();
+
     $.get( "http://localhost:3000/search?q="+$(input).val(), function( data ) {
       var items = data.items;
       if (searchTerm != data.term)
@@ -28,7 +33,7 @@ function userTyped() {
           image = ''
         }
         return {
-          label: '<image height=\'50px\' src=\''+image+'\'/>'+item.volumeInfo.title + '<span> - '+isbn13+'</span>',
+          label: '<image height=\'50px\' src=\''+image+'\'/>'+item.volumeInfo.title + '<span> - ISBN: '+isbn13+'</span>',
           isbn: isbn13,
           value: item.volumeInfo.title
         }
@@ -37,7 +42,8 @@ function userTyped() {
         source: availableTags,
         html:true,
         select: function(event, ui) {
-          document.location.href = "http://localhost:3000/book?isbn="+ui.item.isbn;
+          $('#loadingSpan').hide();
+          document.location.href = "http://localhost:3000/book?isbn="+ui.item.isbn;          
         }
       });
 
@@ -49,6 +55,8 @@ function userTyped() {
         $(input).autocomplete('search');
       })
       $(input).autocomplete('search');
+      $('#loadingSpan').css('left', '-110px');
+      $('#loadingSpan').html(availableTags.length + ' books found');
     });
   }
 }
