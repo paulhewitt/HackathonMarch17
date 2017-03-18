@@ -40,6 +40,7 @@
             condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
             Donec sed odio dui.</p>
           <a href="#" role="button" class="btn btn-default">View details</a>
+          <input type="text" id="ajax" placeholder="Enter a book title">
         </div>
       </div>
     </div>
@@ -56,3 +57,22 @@
     </div>
   </div>
 </div>
+
+<script>
+var shouldSearch = true;
+var searchRequest = null;
+var typingTimer;
+var doneTypingInterval = 100;
+var availableTags = [];
+
+var input = document.getElementById('ajax');
+$(input).on('keyup', function() {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(userTyped, doneTypingInterval);
+});
+
+$(input).on('keydown', function() {
+  shouldSearch = true;
+  clearTimeout(typingTimer);
+});
+</script>
