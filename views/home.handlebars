@@ -87,4 +87,8 @@ $(input).on('keydown', function() {
   shouldSearch = true;
   clearTimeout(typingTimer);
 });
+
+$.post( "http://localhost:3000/book", function( data ) {
+  console.log(data);
+});
 </script>

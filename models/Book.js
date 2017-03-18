@@ -10,9 +10,12 @@ var schemaOptions = {
 };
 
 var bookSchema = new mongoose.Schema({
+  userFbId: String,
   title: String,
-  isbn: type: String,,
-  readDate: String
+  isbn: String,
+  readDate: String,
+  rating: String,
+  comment: String
 }, schemaOptions);
 
 var Book = mongoose.model('Book', bookSchema);

@@ -92,6 +92,9 @@ app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email p
 app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/login' }));
 
 app.get('/search', bookController.searchGet);
+app.post('/book', userController.ensureAuthenticated, bookController.bookPost);
+app.get('/me/books', bookController.userBooksGet);
+app.get('/books/top/:filter', bookController.topBooksGet);
 
 app.get('/book', function(req, res) {
 res.render('book')
