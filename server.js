@@ -96,13 +96,11 @@ app.post('/book', userController.ensureAuthenticated, bookController.bookPost);
 app.get('/me/books', bookController.userBooksGet);
 app.get('/books/top/2016', bookController.topBooks2016Get);
 app.get('/books/top/:filter', bookController.topBooksGet);
-
+app.get('/book', bookController.bookGet);
 
 app.get('/test', bookController.test);
 
-app.get('/book', function(req, res) {
-res.render('book')
-})
+
 
 app.get('/topbooks', function (req, res) {
   res.render('topbooks')

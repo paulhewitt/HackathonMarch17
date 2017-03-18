@@ -4,17 +4,29 @@ var Book = require('../models/Book');
 var Book2016 = require ('../models/Book2016');
 var moment = require('moment');
 
-/**
- * GET /login
- */
 exports.bookGet = function(req, res) {
-  if (req.user) {
-    return res.redirect('/');
-  }
-  res.render('account/login', {
-    title: 'Log in'
+  const isbn = req.query.isbn;
+  axios.get('https://www.googleapis.com/books/v1/volumes?q='+isbn)
+  .then(function (response) {
+    Book.find({ isbn }, function (err, books) {
+      const book = response.data.items[0];
+      const comments = [];
+
+      if (err) {
+        res.sendStatus(500);
+        return handleError(err);
+      }
+      for (var b in books) {
+        comments.push(books[b].comment);
+      }
+      res.render('book', {book, comments});
+    });
+  })
+  .catch(function (error) {
+    console.log(error);
+    res.render('home');
   });
-};
+}
 
 exports.userBooksGet = function(req, res) {
   const userId = 10208029043146470; //req.user.facebook
@@ -24,7 +36,7 @@ exports.userBooksGet = function(req, res) {
       return handleError(err);
     }
     res.json(books);
-  })
+  });
 }
 
 exports.test = function(req, res) {
