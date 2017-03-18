@@ -39,8 +39,13 @@
         </ul>
       </li>
     {{else}}
-      <li class="{{#ifeq title 'Log in'}}active{{/ifeq}}"><a href="/login">Log in</a></li>
-      <li class="{{#ifeq title 'Sign up'}}active{{/ifeq}}"><a href="/signup">Sign up</a></li>
+      <li class="{{#ifeq title 'Log in'}}active{{/ifeq}}"><a href="/login" style="font-size:18px;">
+        Login With
+        <span class="fa-stack">
+          <i class="fa fa-circle fa-stack-2x" style="color:#3b5998;"></i>
+          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+        </span>
+        </a></li>
     {{/if}}
     </ul>
     </div>
