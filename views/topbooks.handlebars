@@ -1,15 +1,5 @@
 <div class="container-fluid">
   <div class="row">
-    <img src="../images/Regina_Logo.png" class="center-block" class="img-responsive" width="350px"/>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-    </div>
-    <input type="text" class="form-control" class="col-sm-6" id="ajax" placeholder="What did you read today?" style="width: 50%; margin-bottom: 30px;">
-    <div class="col-sm-3">
-    </div>
-  </div>
-  <div class="row">
     <div class="col-sm-3">
       <div class="panel">
         <div class="panel-body">
@@ -70,26 +60,3 @@
     </div>
   </div>
 </div>
-
-<script>
-var shouldSearch = true;
-var searchRequest = null;
-var typingTimer;
-var doneTypingInterval = 100;
-var availableTags = [];
-
-var input = document.getElementById('ajax');
-$(input).on('keyup', function() {
-  clearTimeout(typingTimer);
-  typingTimer = setTimeout(userTyped, doneTypingInterval);
-});
-
-$(input).on('keydown', function() {
-  shouldSearch = true;
-  clearTimeout(typingTimer);
-});
-
-$.post( "http://localhost:3000/book", function( data ) {
-  console.log(data);
-});
-</script>

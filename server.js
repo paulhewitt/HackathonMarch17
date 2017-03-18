@@ -103,6 +103,12 @@ app.get('/test', bookController.test);
 app.get('/book', function(req, res) {
 res.render('book')
 })
+
+app.get('/topbooks', function (req, res) {
+  res.render('topbooks')
+})
+
+
 // Production error handler
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
