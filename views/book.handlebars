@@ -5,7 +5,7 @@
 
 <div class = "readbutton">
   <button type="button" class="btn btn-default" aria-label="Checkmark">
-  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"> <p>I have read this book</p></span>
 </div>
 
 <div class = "bookvoting">
@@ -22,7 +22,24 @@
 </div>
 
 <div class = "bookcomments">
-  {{#each comments}}
-    <li>{{this}}</li>
-  {{/each}}
+  <div class="content">
+  <div class="comments">
+    <div class="editor">
+      <div class="editor-header">
+      </div>
+      <div id="text" class="editor-content" contenteditable>
+        <p>Enter comments here!</p>
+      </div>
+    </div>
+      <p>
+        <button type = "submit" class = "btn btn-primary">Submit Comment</button>
+      </p>
+    </div>
+    <div class="list-comments">
+      {{#each comments}}
+        <li>{{this}}</li>
+      {{/each}}
+    </div>
+  </div>
+</div>
 </div>
