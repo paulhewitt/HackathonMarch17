@@ -171,3 +171,22 @@ input[type="submit"]{
 .menu-right:after{
   margin-left: 5px;
 }
+
+.suggestedItem {
+  font-size: 18px;
+  display: block;
+}
+
+.suggestedItem img {
+  margin-right: 10px;
+}
+
+.ui-state-active {
+  background-color: white;
+  border: none !important;
+}
+
+#ui-id-1 {
+  max-height: 250px;
+  overflow: auto;
+}

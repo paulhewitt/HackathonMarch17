@@ -16,7 +16,7 @@ function userTyped() {
       var items = data.items;
       if (searchTerm != data.term)
         return;
-        
+
       availableTags = items.map(function(item){
         var isbn13;
         var image;
@@ -37,14 +37,17 @@ function userTyped() {
         source: availableTags,
         html:true,
         select: function(event, ui) {
-          document.location.href = "http://localhost:3000/book?isb="+ui.item.isbn;
+          document.location.href = "http://localhost:3000/book?isbn="+ui.item.isbn;
         }
       });
 
       $('.suggestedItem').on('click', function() {
         shouldSearch = false;
       });
-      console.log('do search - ' + availableTags)
+
+      $(input).on('focus', function() {
+        $(input).autocomplete('search');
+      })
       $(input).autocomplete('search');
     });
   }
