@@ -208,7 +208,7 @@ exports.searchGet = function(req, res) {
 
   axios.get('https://www.googleapis.com/books/v1/volumes?q='+q)
   .then(function (response) {
-    console.log(response.data);
+    response.data.term = q;
     res.json(response.data);
   })
   .catch(function (error) {

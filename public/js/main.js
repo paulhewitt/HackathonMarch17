@@ -11,12 +11,22 @@ function userTyped() {
   if (value.length >= minlength ) {
     if (searchRequest != null)
         searchRequest.abort();
-
+    searchTerm = $(input).val();
     $.get( "http://localhost:3000/search?q="+$(input).val(), function( data ) {
       var items = data.items;
+      if (searchTerm != data.term)
+        return;
+        
       availableTags = items.map(function(item){
-        var isbn13 = item.volumeInfo.industryIdentifiers[0].identifier;
-        var image = item.volumeInfo.imageLinks.smallThumbnail;
+        var isbn13;
+        var image;
+        try {
+          isbn13 = item.volumeInfo.industryIdentifiers[0].identifier;
+          image = item.volumeInfo.imageLinks.smallThumbnail;
+        } catch (e) {
+          isbn13 = 0;
+          image = ''
+        }
         return {
           label: '<image height=\'50px\' src=\''+image+'\'/>'+item.volumeInfo.title + '<span> - '+isbn13+'</span>',
           isbn: isbn13,
@@ -27,14 +37,15 @@ function userTyped() {
         source: availableTags,
         html:true,
         select: function(event, ui) {
-          document.location.href = "http://localhost:3000/book?"+ui.item.isbn;
+          document.location.href = "http://localhost:3000/book?isb="+ui.item.isbn;
         }
       });
 
       $('.suggestedItem').on('click', function() {
         shouldSearch = false;
-
       });
+      console.log('do search - ' + availableTags)
+      $(input).autocomplete('search');
     });
   }
 }
