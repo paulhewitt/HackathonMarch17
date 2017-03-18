@@ -1,98 +1,96 @@
 <div class="container-fluid">
-  <div class="mainrow">
-  <div class="row">
-    <img src="../images/Regina_Logo_Stroke.png" class="center-block" class="img-responsive" width="350px"/>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-    </div>
-    <input type="text" class="form-control pull-left" class="col-sm-6" id="ajax" placeholder="What did you read today?" style="width: 50%; margin-bottom: 30px; font-size: 24px">
-      <span id="loadingSpan" style="display: none; color: grey; position: relative; left: -40px; top: 15px"></span>
-    </input>
-    <div class="col-sm-3">
-    </div>
-  </div>
-  </div>
-  <div class="row">
-    <h3 class="panel-body" style="padding-top: 0px;">What's trending</h3>
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book1.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-        </div>
+   <div class="mainrow">
+      <div class="row">
+         <img src="../images/Regina_Logo_Stroke.png" class="center-block" class="img-responsive" width="350px"/>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book2.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-        </div>
+      <div class="row">
+         <div class="col-sm-3">
+         </div>
+         <input type="text" class="form-control pull-left" class="col-sm-6" id="ajax" placeholder="What did you read today?" style="width: 50%; margin-bottom: 30px; font-size: 24px; text-align:center;">
+         <span id="loadingSpan" style="display: none; color: grey; position: relative; left: -40px; top: 15px"></span>
+         </input>
+         <div class="col-sm-3">
+         </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book3.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-        </div>
+   </div>
+   <div class="row">
+      <h3 class="panel-body" style="padding-top: 0px;">What's trending</h3>
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book1.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book4.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-        </div>
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book2.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book5.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-        </div>
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book3.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book6.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-        </div>
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book4.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book7.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-
-        </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book5.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="panel">
-        <div class="panel-body">
-          <img src="../images/book8.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
-        </div>
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book6.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book7.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-3">
+         <div class="panel">
+            <div class="panel-body">
+               <img src="../images/book8.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
-
 <script>
-var shouldSearch = true;
-var searchRequest = null;
-var typingTimer;
-var doneTypingInterval = 100;
-var availableTags = [];
-var searchTerm = '';
+   var shouldSearch = true;
+   var searchRequest = null;
+   var typingTimer;
+   var doneTypingInterval = 100;
+   var availableTags = [];
+   var searchTerm = '';
 
-var input = document.getElementById('ajax');
-$(input).on('keyup', function() {
-  clearTimeout(typingTimer);
-  if (searchTerm == $(input).val()) {
-    return;
-  }
-  typingTimer = setTimeout(userTyped, doneTypingInterval);
-});
+   var input = document.getElementById('ajax');
+   $(input).on('keyup', function() {
+     clearTimeout(typingTimer);
+     if (searchTerm == $(input).val()) {
+       return;
+     }
+     typingTimer = setTimeout(userTyped, doneTypingInterval);
+   });
 
 $(input).on('keydown', function() {
   shouldSearch = true;
