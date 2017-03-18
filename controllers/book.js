@@ -1,6 +1,7 @@
 var async = require('async');
 var axios = require('axios');
 var Book = require('../models/Book');
+var Book2016 = require ('../models/Book2016');
 var moment = require('moment');
 
 /**
@@ -26,10 +27,94 @@ exports.userBooksGet = function(req, res) {
   })
 }
 
+exports.test = function(req, res) {
+  for (var i=0;i<50;i++) {
+    var titles = ['Harry P', 'Tay is great', 'Big Cool Dads'];
+    var isbn = ['1234567891234', '555345', '57575757'];
+    var index = Math.floor(Math.random()*3);
+    var book = new Book({
+      userFbId: '10208029043146470',
+      title: titles[index],
+      isbn: isbn[index],
+      readDate: moment().valueOf(),
+      rating: 'like',
+      comment: ''
+    });
+    book.save(function(err) {
+      if (err) return handleError(err);
+      console.log('book saved');
+    });
+  }
+}
+
+exports.topBooks2016Get = function(req, res) {
+  console.log('eh')
+  Book2016.find({}, function (err, books) {
+    if (err) {
+      res.sendStatus(500);
+      return handleError(err);
+    }
+    console.log(books);
+    var bookList = {};
+    var itemCount = books.length;
+    console.log(books.length);
+    books.forEach(function (book, iter) {
+
+      if (!bookList[book.ISBN]) {
+        bookList[book.ISBN] = book
+        bookList[book.ISBN].score = 1;
+      }
+      else
+        bookList[book.ISBN].score ++;
+
+      if (itemCount == (iter+1)) {
+        var sortable = [];
+        for (var book in bookList) {
+            sortable.push([bookList[book], bookList[book].score]);
+        }
+        sortable.sort(function(a, b) {
+            return b[1] - a[1];
+        });
+        res.json(sortable.slice(0, req.query.limit || 10));
+      }
+    });
+  })
+}
+
+exports.userBooksGet = function(req, res) {
+  const userId = 10208029043146470; //req.user.facebook
+  Book.find({ userFbId: userId }, function (err, books) {
+    if (err) {
+      res.sendStatus(500);
+      return handleError(err);
+    }
+    res.json(books);
+  })
+}
+
+exports.test = function(req, res) {
+  for (var i=0;i<50;i++) {
+    var titles = ['Harry P', 'Tay is great', 'Big Cool Dads'];
+    var isbn = ['1234567891234', '555345', '57575757'];
+    var index = Math.floor(Math.random()*3);
+    var book = new Book({
+      userFbId: '10208029043146470',
+      title: titles[index],
+      isbn: isbn[index],
+      readDate: moment().valueOf(),
+      rating: 'like',
+      comment: ''
+    });
+    book.save(function(err) {
+      if (err) return handleError(err);
+      console.log('book saved');
+    });
+  }
+}
+
 exports.topBooksGet = function(req, res) {
   const filter = req.params.filter;
   var queryFilter = moment.now();
-  console.log(queryFilter);
   if (filter === 'day') {
     queryFilter = moment().startOf('day').valueOf()
   }
@@ -39,7 +124,6 @@ exports.topBooksGet = function(req, res) {
   if (filter === 'month') {
     queryFilter = moment().startOf('month').valueOf()
   }
-  console.log(queryFilter);
   Book.find({
     readDate: {
         $gte: queryFilter,
@@ -49,7 +133,27 @@ exports.topBooksGet = function(req, res) {
       res.sendStatus(500);
       return handleError(err);
     }
-    res.json(books);
+    var bookList = {};
+    var itemCount = books.length;
+    books.forEach(function (book, iter) {
+      if (!bookList[book.isbn]) {
+        bookList[book.isbn] = book
+        bookList[book.isbn].score = 1;
+      }
+      else
+        bookList[book.isbn].score ++;
+
+      if (itemCount == (iter+1)) {
+        var sortable = [];
+        for (var book in bookList) {
+            sortable.push([bookList[book], bookList[book].score]);
+        }
+        sortable.sort(function(a, b) {
+            return b[1] - a[1];
+        });
+        res.json(sortable.slice(0, req.query.limit || 10));
+      }
+    });
   })
 }
 

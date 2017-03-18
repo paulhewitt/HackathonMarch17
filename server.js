@@ -94,7 +94,11 @@ app.get('/auth/github/callback', passport.authenticate('github', { successRedire
 app.get('/search', bookController.searchGet);
 app.post('/book', userController.ensureAuthenticated, bookController.bookPost);
 app.get('/me/books', bookController.userBooksGet);
+app.get('/books/top/2016', bookController.topBooks2016Get);
 app.get('/books/top/:filter', bookController.topBooksGet);
+
+
+app.get('/test', bookController.test);
 
 app.get('/book', function(req, res) {
 res.render('book')
