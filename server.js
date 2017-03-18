@@ -93,6 +93,9 @@ app.get('/auth/github/callback', passport.authenticate('github', { successRedire
 
 app.get('/search', bookController.searchGet);
 
+app.get('/book', function(req, res) {
+res.render('book')
+})
 // Production error handler
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
