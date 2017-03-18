@@ -10,14 +10,9 @@ var schemaOptions = {
 };
 
 var bookSchema = new mongoose.Schema({
-  userFbId: String,
-  title: String,
-  isbn: String,
-  readDate: String,
-  rating: String,
-  comment: String
+  ISBN: String
 }, schemaOptions);
 
-var Book = mongoose.model('Book', bookSchema);
+var Book2016 = mongoose.model('Book2016', bookSchema);
 
-module.exports = Book;
+module.exports = Book2016;
