@@ -43,7 +43,7 @@ function userTyped() {
         html:true,
         select: function(event, ui) {
           $('#loadingSpan').hide();
-          document.location.href = "http://localhost:3000/book?isbn="+ui.item.isbn;          
+          document.location.href = "http://localhost:3000/book?isbn="+ui.item.isbn;
         }
       });
 
@@ -59,4 +59,27 @@ function userTyped() {
       $('#loadingSpan').html(availableTags.length + ' books found');
     });
   }
+}
+
+function likeDislike(title, isbn, opt) {
+  var rating = opt;
+  $.post( "http://localhost:3000/book", {
+    title,
+    isbn,
+    rating,
+  },
+  function( data ) {
+    console.log(data);
+  });
+}
+
+function comment(title, isbn, comment) {
+  $.post( "http://localhost:3000/book", {
+    title,
+    isbn,
+    comment,
+  },
+  function( data ) {
+    console.log(data);
+  });
 }

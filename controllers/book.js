@@ -177,24 +177,24 @@ exports.bookPost = function(req, res) {
   const comment = req.body.comment;
   const readDate = moment.now();
 
-  if (!userId || !title || !isbn) {
+  if (!title || !isbn) {
     res.status(302).json({message: 'Required params: userId, title, isbn'});
     return;
   }
 
-  var book = new Book({
+  var book = {
     userFbId: userId,
     title,
     isbn,
     readDate,
     rating,
     comment
-  });
+  };
 
-  book.save(function(err) {
-    if (err) return handleError(err);
-    console.log('book saved');
-    res.sendStatus(201);
+  var query = {userFbId: userId, isbn};
+  Book.findOneAndUpdate(query, book, {upsert:true}, function(err, doc){
+      if (err) return res.send(500, { error: err });
+      res.sendStatus(201);
   });
 }
 
