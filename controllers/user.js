@@ -119,7 +119,7 @@ exports.profileGet = function(req, res) {
       res.sendStatus(500);
       return handleError(err);
     }
-    res.render('profile', books);
+    res.render('profile', {books: books});
   });
 };
 

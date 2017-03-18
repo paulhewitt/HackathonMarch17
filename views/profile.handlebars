@@ -1,25 +1,33 @@
 <div class="container">
   <div class="panel">
     <div class="panel-heading">
-      <h3 class="panel-title">Contact Form</h3>
+      <h3 class="panel-title">Profile</h3>
     </div>
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-4">
           <div class="panel">
-            <div class="panel-body">
+            <div class="panel-body text-center">
               {{#if user.picture}}
-                <img src="{{user.picture}}">
+                <img style="width: 100%" src="{{user.picture}}">
               {{else}}
                 <img src="{{user.gravatar}}">
               {{/if}}
+              <br/>
+              <div style="font-size:24px">{{user.name}}</div>
             </div>
           </div>
         </div>
         <div class="col-sm-8">
           <div class="panel">
             <div class="panel-body">
-              <img src="../images/book6.jpg" class="center-block" class="img-responsive" style="width: 100%;"/>
+              <h1>My Book Log</h1>
+              <div style="max-height: 600px; overflow: auto">
+                {{#each books}}
+                  <div style="font-size: 24px">{{this.title}}</div>
+                  <div style="font-size: 18px; margin-bottom: 15px">Author: Taylor Petrychyn - Your Rating: <i class="fa fa-thumbs-up" aria-hidden="true"></i></div>
+                {{/each}}
+              </div>
             </div>
           </div>
         </div>
