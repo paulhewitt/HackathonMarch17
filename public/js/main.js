@@ -17,7 +17,7 @@ function userTyped() {
     $('#loadingSpan').html('<i class="fa fa-2x fa-spinner fa-spin"></i>');
     $('#loadingSpan').show();
 
-    $.get( "http://localhost:3000/search?q="+$(input).val(), function( data ) {
+    $.get( "https://qchack17.herokuapp.com/search?q="+$(input).val(), function( data ) {
       var items = data.items;
       if (searchTerm != data.term)
         return;
@@ -43,7 +43,7 @@ function userTyped() {
         html:true,
         select: function(event, ui) {
           $('#loadingSpan').hide();
-          document.location.href = "http://localhost:3000/book?isbn="+ui.item.isbn;
+          document.location.href = "/book?isbn="+ui.item.isbn;
         }
       });
 
