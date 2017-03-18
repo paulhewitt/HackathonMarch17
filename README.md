@@ -11,4 +11,4 @@
 - **Authentication**: facebook
 - **Deployment**: heroku
 
-A lightweight book tracking webapp made for QueenCity <hack> March 2017
+A lightweight book tracking webapp made for QueenCity hack March 2017
