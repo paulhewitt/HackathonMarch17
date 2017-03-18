@@ -11,6 +11,7 @@ var dotenv = require('dotenv');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var axios = require('axios');
 
 // Load environment variables from .env file
 dotenv.load();
