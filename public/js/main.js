@@ -2,9 +2,10 @@ $(function() {
   // Your custom JavaScript goes here
 });
 
+
 function userTyped() {
   var minlength = 3;
-
+  var clickedIsbn;
   value = $(input).val();
 
   if (value.length >= minlength ) {
@@ -28,6 +29,7 @@ function userTyped() {
       $(input).autocomplete("search");
       $('.suggestedItem').on('click', function() {
         shouldSearch = false;
+        
       });
     });
   }
